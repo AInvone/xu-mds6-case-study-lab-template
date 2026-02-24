@@ -138,13 +138,16 @@ If the code cannot be executed or results cannot be reproduced, the submission c
 ### Option 1 — Google Colab
 
 1. Open the notebook in Google Colab (from GitHub or by uploading the repo ZIP).
-2. Install dependencies:
+2. Ensure the **entire repo** (including the `src/` folder with the `.py` files) is available in Colab so that `from src.data_loading import ...` works. After uploading a ZIP, unzip it and set Colab’s working directory to the repo root if needed.
+3. Install dependencies:
    - Run the first cell: `pip install -r requirements.txt`
 
    Or: 
    ```python
    !pip install -r ../requirements.txt
-3.	Run the notebook from top to bottom.
+   ```
+   (adjust the path to `requirements.txt` if your notebook is in a subfolder.)
+4. Run the notebook from top to bottom.
 
 **Notes:**
 
