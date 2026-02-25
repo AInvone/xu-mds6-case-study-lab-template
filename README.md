@@ -133,6 +133,91 @@ If the code cannot be executed or results cannot be reproduced, the submission c
 
 ---
 
+## Setting up the environment
+
+Set up a local environment once so you can install the packages from `requirements.txt` and run the notebooks smoothly.
+
+### Prerequisites
+
+- **Python 3.10 or 3.11** (recommended). Check with: `python3 --version`
+- **pip** (usually included with Python). Check with: `pip --version`
+
+### Step 1 — Clone or download the repository
+
+```bash
+cd /path/to/your/projects
+git clone <repository-url>
+cd xu-mds6-case-study-lab-template
+```
+
+Or download and unzip the repo, then open a terminal in the project root (the folder that contains `src/`, `requirements.txt`, and the notebooks).
+
+### Step 2 — Create and activate a virtual environment
+
+Using a virtual environment keeps this project’s dependencies separate from your system Python.
+
+**On macOS / Linux:**
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+## Remark: .venv is the name you choose for this environment, you can also choose some other name for it
+
+**On Windows (Command Prompt):**
+
+```cmd
+python -m venv .venv
+.venv\Scripts\activate.bat
+```
+
+**On Windows (PowerShell):**
+
+```powershell
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+```
+
+You should see `(.venv)` (or similar) in your prompt. The rest of the steps assume this environment is activated.
+
+**Optional — using Conda:**
+
+```bash
+conda create -n mds6-lab python=3.11 -y
+conda activate mds6-lab
+```
+
+### Step 3 — Install dependencies
+
+From the **project root** (same directory as `requirements.txt`):
+
+```bash
+pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+This installs: `numpy`, `pandas`, `scikit-learn`, and `matplotlib` (and their dependencies).
+
+### Step 4 — Verify the installation
+
+Check that the main packages are available:
+
+```bash
+python -c "import numpy, pandas, sklearn, matplotlib; print('All packages OK')"
+```
+
+If you see `All packages OK`, the environment is ready.
+
+### Step 5 — Run the notebooks
+
+- **Jupyter:** From the project root, run `jupyter notebook` or `jupyter lab`, then open `01_telco_case_study.ipynb` or `02_housing_case_study.ipynb`. The notebook’s working directory will be the project root, so `from src.data_loading import ...` will work.
+- **VS Code / Cursor:** Open the project folder (the repo root), then open a notebook. Select the kernel that uses your `.venv` (e.g. “Python 3.x.x (’.venv’)”). Run cells from top to bottom.
+- **Command line (headless):** `jupyter nbconvert --execute --to notebook 01_telco_case_study.ipynb` (run from project root).
+
+**Important:** Always run notebooks from the **project root** so that the `src/` package can be imported.
+
+---
+
 ## Running the Project
 
 ### Option 1 — Google Colab
@@ -158,12 +243,8 @@ If the code cannot be executed or results cannot be reproduced, the submission c
 
 ### Option 2 — Local Environment
 
-1.	Create and activate a virtual environment (recommended). A good tutorial can be found here: https://www.w3schools.com/python/python_virtualenv.asp 
-
-2. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-3.	Open and run the notebook from top to bottom using Jupyter, VS Code, or similar.
+1. Set up the environment following the section [**Setting up the environment**](#setting-up-the-environment) above (create venv, install from `requirements.txt`).
+2. Open and run the notebook from top to bottom using Jupyter, VS Code, or similar. Ensure the notebook is run from the **project root** so `from src.data_loading import ...` works.
 
 --- 
 
